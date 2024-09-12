@@ -1,46 +1,38 @@
-// Load the YAML configuration
-def config = readYaml file: 'config.yaml'
+@Grab(group='org.yaml', module='snakeyaml', version='1.30')
+import org.yaml.snakeyaml.Yaml
+import java.nio.file.Files
+import java.nio.file.Paths
 
-// Ensure the configuration is loaded properly
-if (config == null) {
-    error "Failed to load configuration from 'config.yaml'"
+// Load YAML file
+def loadYaml(String filePath) {
+    def yaml = new Yaml()
+    def inputStream = Files.newInputStream(Paths.get(filePath))
+    return yaml.load(inputStream)
 }
 
-// Access and use the 'libraries' list
+// Path to your YAML file
+def filePath = 'config.yaml'
+
+// Read the YAML configuration
+def config = loadYaml(filePath)
+
+// Access and use the configuration
 def libraries = config.libraries ?: []
-if (libraries instanceof List) {
-    libraries.each { lib ->
-        echo "Library: ${lib}"
-        // Load libraries or perform actions as needed
-        // Example: if (lib == 'maven') { // load maven library }
-    }
-} else {
-    echo "No libraries found or 'libraries' is not a list"
+libraries.each { lib ->
+    println "Library: ${lib}"
 }
 
-// Check if SCM Jenkinsfile is allowed
 if (config.allow_scm_jenkinsfile) {
-    echo "SCM Jenkinsfile is allowed"
-} else {
-    echo "SCM Jenkinsfile is not allowed or not set"
+    println "SCM Jenkinsfile is allowed"
 }
 
-// Access application environments
 def envs = config.application_environments ?: [:]
-if (envs instanceof Map) {
-    envs.each { envName, envConfig ->
-        echo "Environment: ${envName}"
-        if (envConfig.ip_addresses) {
-            echo "IP Addresses: ${envConfig.ip_addresses.join(', ')}"
-        } else {
-            echo "No IP Addresses found for ${envName}"
-        }
-        if (envConfig.long_name) {
-            echo "Long Name: ${envConfig.long_name}"
-        } else {
-            echo "No Long Name found for ${envName}"
-        }
+envs.each { envName, envConfig ->
+    println "Environment: ${envName}"
+    if (envConfig.ip_addresses) {
+        println "IP Addresses: ${envConfig.ip_addresses.join(', ')}"
     }
-} else {
-    echo "No application environments found or 'application_environments' is not a map"
+    if (envConfig.long_name) {
+        println "Long Name: ${envConfig.long_name}"
+    }
 }
