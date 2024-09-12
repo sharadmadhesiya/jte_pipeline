@@ -1,6 +1,6 @@
 @Library('my-shared-library') _
 
-def config = readYaml file: 'config.yaml'
+def config = readYaml file: 'yaml_conf.yaml'
 
 // Access libraries
 def libraries = config.libraries
