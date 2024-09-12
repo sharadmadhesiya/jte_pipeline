@@ -1,6 +1,7 @@
 libraries:
   - maven
-  - gradle
+  - sonarqube
+  - ansible
 
 allow_scm_jenkinsfile: true
 
