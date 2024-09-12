@@ -1,13 +1,16 @@
-def config = readYaml file: 'yaml_conf.yaml'
 
-// Access libraries
+// Load the YAML configuration
+def config = readYaml file: 'config.yaml'
+
+// Access and use the 'libraries' list
 def libraries = config.libraries
 libraries.each { lib ->
-    // Load libraries as required
     echo "Library: ${lib}"
+    // Load libraries or perform actions as needed
+    // Example: if (lib == 'maven') { // load maven library }
 }
 
-// Check allow_scm_jenkinsfile
+// Check if SCM Jenkinsfile is allowed
 if (config.allow_scm_jenkinsfile) {
     echo "SCM Jenkinsfile is allowed"
 }
