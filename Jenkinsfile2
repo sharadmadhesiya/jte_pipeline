@@ -1,6 +1,5 @@
-@Library('maven') _
-@Library('sonarqube') _
-@Library('ansible') _
+@Library('test_jte') _
+
 pipeline {
     agent any
 
