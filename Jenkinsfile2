@@ -1,5 +1,3 @@
-@Library('test_jte') _
-
 pipeline {
     agent any
 
