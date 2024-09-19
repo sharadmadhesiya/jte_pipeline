@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Modify Configuration') {
+            steps {
+                script {
+                    echo "Modifying YAML configuration..."
+                    sh './convert.sh'
+                }
+            }
+        }
+        stage('Build') {
+            steps {
+                build()
+            }
+        }
+        stage('Static Code Analysis') {
+            steps {
+                static_code_analysis()
+            }
+        }
+        stage('Deploy to Dev') {
+            steps {
+                deploy_to('dev')
+            }
+        }
+        stage('Deploy to Prod') {
+            steps {
+                deploy_to('prod')
+            }
+        }
+    }
+}
