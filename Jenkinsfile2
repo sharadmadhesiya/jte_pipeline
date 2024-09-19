@@ -1,3 +1,4 @@
+@Library('default-1') _
 pipeline {
     agent any
 
