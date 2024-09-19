@@ -1,4 +1,6 @@
-@Library('default-1') _
+@Library('maven') _
+@Library('sonarqube') _
+@Library('ansible') _
 pipeline {
     agent any
 
