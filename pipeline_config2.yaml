@@ -1,0 +1,17 @@
+libraries:
+  - maven
+  - sonarqube
+  - ansible
+
+allow_scm_jenkinsfile: true
+
+application_environments:
+  dev:
+    ip_addresses:
+      - 192.168.2.2
+      - 192.168.10.10
+    long_name: Development Environment
+  prod:
+    ip_addresses:
+      - 109.0.12.3
+    long_name: Production Environment
