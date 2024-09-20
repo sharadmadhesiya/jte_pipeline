@@ -13,5 +13,5 @@ application_environments:
     long_name: Development Environment
   prod:
     ip_addresses:
-      - 10.0.0.1
+      - 10.0.0.12
     long_name: Production Environment
