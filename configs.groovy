@@ -10,8 +10,8 @@ application_environments:
     ip_addresses:
       - 192.168.1.1
       - 192.168.1.2
-    long_name: Development Environment
+    long_name: Pre Development Environment
   prod:
     ip_addresses:
-      - 10.0.0.12
+      - 101.112.0.34
     long_name: Production Environment
