@@ -2,6 +2,7 @@ libraries{
     maven
     sonarqube
     ansible
+    splunk
 }
 
 allow_scm_jenkinsfile = true 
