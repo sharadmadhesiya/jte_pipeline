@@ -1,5 +1,4 @@
 libraries {
-    merge = true
     ios
 }
 allow_scm_jenkinsfile = true 
