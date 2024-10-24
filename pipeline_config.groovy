@@ -1,6 +1,7 @@
 libraries {
     ios
 }
+allow_scm_jenkinsfile = true 
 
 globals {
     APPSTORE_API_KEY_FILE = 'APPSTORE_API_KEY_FILE'
