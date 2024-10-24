@@ -1,9 +1,10 @@
 libraries {
+    merge = true
     ios
 }
 allow_scm_jenkinsfile = true 
 
-globals {
+dev {
     APPSTORE_API_KEY_FILE = 'APPSTORE_API_KEY_FILE'
     GITAUTHORIZATION = 'GITAUTHORIZATION'
     KEYCHAINPASSWORD = 'KEYCHAINPASSWORD'
