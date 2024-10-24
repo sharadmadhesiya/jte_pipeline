@@ -13,3 +13,5 @@ dev {
     APPSTORE_ISSUER_ID = 'APPSTORE_ISSUER_ID' // App Store Connect Issuer ID
     APPSTORE_BUNDLE_ID = 'com.test.statusneo'
 }
+
+APPSTORE_BUNDLE_ID = 'com.test.statusneo'
