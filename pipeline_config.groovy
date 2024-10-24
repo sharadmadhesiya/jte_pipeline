@@ -9,5 +9,6 @@ MATCH_PASSWORD = 'MATCH_PASSWORD'
 GITHUB_TOKEN = 'GITAUTHORIZATION'
 APPSTORE_KEY_ID = 'APPSTORE_KEY_ID' // App Store Connect Key ID
 APPSTORE_ISSUER_ID = 'APPSTORE_ISSUER_ID' // App Store Connect Issuer ID
+APPSTORE_bundle_id = 'com.test.statusneo'
  
     
