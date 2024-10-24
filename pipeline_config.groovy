@@ -2,6 +2,7 @@ libraries {
     ios
 }
 allow_scm_jenkinsfile = true 
+merge = true
 
 dev {
     APPSTORE_API_KEY_FILE = 'APPSTORE_API_KEY_FILE'
