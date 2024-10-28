@@ -30,7 +30,7 @@ def beta(scheme, bundle_id)
 
   match(
     git_url: ENV['GITAUTHORIZATION'], # Replace with your Git URL
-    git_basic_authorization: basic_authorization_token,
+    #git_basic_authorization: basic_authorization_token,
     type: "appstore",
     app_identifier: ["com.kenvue.katalyst.demo"]
   )
