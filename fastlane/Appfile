@@ -1,0 +1,4 @@
+
+app_identifier "com.kenvue.katalyst.demo" # Your app's bundle identifier
+apple_id "smadhe01@kenvue.com"        # Your Apple ID
+team_id "D6CR985G9Q"                      # Developer Portal team ID

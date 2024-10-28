@@ -1,0 +1,80 @@
+# Fastfile
+
+# Import necessary dependencies
+require 'base64'
+
+# Function to set up App Store Connect API Key
+def setup_api_key
+  
+  app_store_connect_api_key(
+    key_id: ENV['APPSTORE_KEY_ID'],#${{ secrets.APPSTORE_KEY_ID }},
+    issuer_id: ENV['APPSTORE_ISSUER_ID'],#${{ secrets.APPSTORE_ISSUER_ID }},
+    key_content: ENV['APPSTORE_API_KEY_FILE']
+   
+  )
+end
+
+# Define your beta lane
+def beta(scheme, bundle_id)
+  setup_api_key() # Import the setup_api_key function
+  setup_ci() # Creates a temporary keychain for CI
+  
+  # Sync certificates and provisioning profiles
+  authorization_token_str = ENV['TOKEN']#ENV['APPSTORE_ISSUER_ID']
+  basic_authorization_token = Base64.strict_encode64(authorization_token_str)
+  unlock_keychain(
+    path: "login",
+    password: ENV["KEYCHAINPASSWORD"]
+  )
+
+  match(
+    git_url: ENV['GITAUTHORIZATION'], # Replace with your Git URL
+    git_basic_authorization: basic_authorization_token,
+    type: "appstore",
+    app_identifier: ["com.kenvue.katalyst.demo"]
+  )
+  
+
+  update_code_signing_settings(
+    use_automatic_signing: false,
+    path: "HelloWorld.xcodeproj", # Update with your project path
+    code_sign_identity: "Apple Distribution: Johnson and Johnson Consumer Services EAME Limited (D6CR985G9Q)",
+    profile_name: "match AppStore com.kenvue.katalyst.demo", # Ensure this profile matches your provisioning profile
+    bundle_identifier: bundle_id
+  )
+
+  latest_testflight_build_number = latest_testflight_build_number({
+    app_identifier: bundle_id
+  })
+  increment_build_number({
+    build_number: latest_testflight_build_number + 1
+  })
+
+  # increment_version_number({
+  #   bump_type: "patch" # Change this to "minor" or "major" if needed
+  # })
+  # build_app(scheme: scheme, export_method: "app-store",)
+
+  # gym(
+  #   scheme: scheme, # Ensure the scheme matches your Xcode project
+    
+  #   export_method: "app-store", # app-store for distribution
+  #   # export_options: {
+  #   #   provisioningProfiles: {
+  #   #     bundle_id => "kenvue demo distribution profile" # Ensure this matches your provisioning profile
+  #   #   }
+  #   # }
+  # )
+
+end
+
+desc "Build and push a new build to TestFlight"
+lane :release_build do
+  #scheme = "HelloWorld"
+  app_identifier = "com.kenvue.katalyst.demo" 
+  beta("HelloWorld", app_identifier) # Replace HelloWorld with your scheme
+  build_app(scheme: "HelloWorld", export_method: "app-store",project: "HelloWorld.xcodeproj")
+  upload_to_testflight(app_identifier: app_identifier)
+  # Cleanup the p8 file after the build to ensure it's not lingering around
+  File.delete(Dir.pwd + "/AuthKey_598XJ59JZF.p8") if File.exist?(Dir.pwd + "/AuthKey_598XJ59JZF.p8")
+end
