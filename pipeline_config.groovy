@@ -13,6 +13,8 @@ dev {
     APPSTORE_KEY_ID = 'APPSTORE_KEY_ID' // App Store Connect Key ID
     APPSTORE_ISSUER_ID = 'APPSTORE_ISSUER_ID' // App Store Connect Issuer ID
     APPSTORE_BUNDLE_ID = 'com.test.statusneo'
+    BRANCH_NAME = 'main'
+    GIT_URL='https://github.com/sharadmadhesiya/jte_pipeline.git'
 }
 
 APPSTORE_BUNDLE_ID = 'com.test.statusneo'
