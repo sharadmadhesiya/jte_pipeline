@@ -21,8 +21,8 @@ def beta(scheme, bundle_id)
   # Sync certificates and provisioning profiles
 
   # TODO - uncomment this in final push
-  # authorization_token_str = ENV['TOKEN']#ENV['APPSTORE_ISSUER_ID']
-  # basic_authorization_token = Base64.strict_encode64(authorization_token_str)
+  authorization_token_str = ENV['TOKEN']#ENV['APPSTORE_ISSUER_ID']
+  basic_authorization_token = Base64.strict_encode64(authorization_token_str)
   unlock_keychain(
     path: "login",
     password: ENV["KEYCHAINPASSWORD"]
@@ -30,7 +30,7 @@ def beta(scheme, bundle_id)
 
   match(
     git_url: ENV['GITAUTHORIZATION'], # Replace with your Git URL
-    #git_basic_authorization: basic_authorization_token,
+    git_basic_authorization: basic_authorization_token,
     readonly: false,
     type: "appstore",
     app_identifier: ["com.kenvue.katalyst.demo"]
