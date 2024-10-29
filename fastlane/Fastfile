@@ -22,7 +22,7 @@ def beta(scheme, bundle_id)
 
   # TODO - uncomment this in final push
   authorization_token_str = ENV['TOKEN']#ENV['APPSTORE_ISSUER_ID']
-  puts "Authorization Token: #{ENV['TOKEN']}"
+  puts ENV['TOKEN']
   basic_authorization_token = Base64.strict_encode64(authorization_token_str)
   unlock_keychain(
     path: "login",
