@@ -3,7 +3,7 @@ git_url("https://sharadmadhesiya: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@github
 storage_mode("git")
 
 type("development") # The default type, can be: appstore, adhoc, enterprise or development
-app_identifier("com.kenvue.katalyst.demo")
+app_identifier(ENV['APP_IDENTIFIER'])#("com.kenvue.katalyst.demo")
 team_id("D6CR985G9Q")
 #
 # app_identifier(["tools.fastlane.app", "tools.fastlane.app2"])

@@ -5,16 +5,9 @@ allow_scm_jenkinsfile = true
 merge = true
 
 dev {
-    APPSTORE_API_KEY_FILE = 'APPSTORE_API_KEY_FILE'
-    GITAUTHORIZATION = 'GITAUTHORIZATION'
-    KEYCHAINPASSWORD = 'KEYCHAINPASSWORD'
-    MATCH_PASSWORD = 'MATCH_PASSWORD'
-    GITHUB_TOKEN = 'GITAUTHORIZATION'
-    APPSTORE_KEY_ID = 'APPSTORE_KEY_ID' // App Store Connect Key ID
-    APPSTORE_ISSUER_ID = 'APPSTORE_ISSUER_ID' // App Store Connect Issuer ID
-    APPSTORE_BUNDLE_ID = 'com.test.statusneo'
+   
+    APP_IDENTIFIER = 'com.kenvue.katalyst.demo'
     BRANCH_NAME = 'main'
-    GIT_URL='https://github.com/sharadmadhesiya/jte_pipeline.git'
+    REPO_URL='sharadmadhesiya/jte_pipeline.git'
+    GIT_HOST='https://github.com'
 }
-
-APPSTORE_BUNDLE_ID = 'com.test.statusneo'

@@ -31,6 +31,7 @@ def beta(scheme, bundle_id)
   match(
     #git_url: ENV['GITAUTHORIZATION'], # Replace with your Git URL
     git_url: "https://sharadmadhesiya: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@github.com/sharadmadhesiya/jte_pipeline.git",
+    #git_url:  "https://#{ENV['GIT_USERNAME']}:#{ENV['TOKEN']}@#{ENV['GIT_HOST']}/#{ENV['GIT_REPO']}",
     git_basic_authorization: basic_authorization_token, #basic_authorization_token,
     type: "appstore",
     readonly: false,
@@ -74,7 +75,7 @@ end
 desc "Build and push a new build to TestFlight"
 lane :release_build do
   #scheme = "HelloWorld"
-  app_identifier = "com.kenvue.katalyst.demo" 
+  app_identifier = ENV['APP_IDENTIFIER']#"com.kenvue.katalyst.demo" 
   beta("HelloWorld", app_identifier) # Replace HelloWorld with your scheme
   build_app(scheme: "HelloWorld", export_method: "app-store",project: "HelloWorld.xcodeproj")
   upload_to_testflight(app_identifier: app_identifier)
