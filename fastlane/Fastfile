@@ -39,6 +39,7 @@ def beta(scheme, bundle_id)
     git_url: "https://sharadmadhesiya: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@github.com/sharadmadhesiya/jte_pipeline.git",
     git_basic_authorization: basic_authorization_token, #basic_authorization_token,
     type: "appstore",
+    readonly: false,
     app_identifier: ["com.kenvue.katalyst.demo"]
   )
   
