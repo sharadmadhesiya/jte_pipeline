@@ -30,8 +30,8 @@ def beta(scheme, bundle_id)
 
   match(
     #git_url: ENV['GITAUTHORIZATION'], # Replace with your Git URL
-    git_url: "https://sharadmadhesiya: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@github.com/sharadmadhesiya/jte_pipeline.git",
-    #git_url:  "https://#{ENV['GIT_USERNAME']}:#{ENV['TOKEN']}@#{ENV['GIT_HOST']}/#{ENV['GIT_REPO']}",
+    #git_url: "https://sharadmadhesiya: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@github.com/sharadmadhesiya/jte_pipeline.git",
+    git_url:  "https://#{ENV['GIT_USERNAME']}:#{ENV['TOKEN']}@#{ENV['GIT_HOST']}/#{ENV['GIT_REPO']}",
     git_basic_authorization: basic_authorization_token, #basic_authorization_token,
     type: "appstore",
     readonly: false,
