@@ -41,9 +41,9 @@ def beta(scheme, bundle_id)
 
   update_code_signing_settings(
     use_automatic_signing: false,
-    path: "HelloWorld.xcodeproj", # Update with your project path
-    code_sign_identity: "Apple Distribution: Johnson and Johnson Consumer Services EAME Limited (D6CR985G9Q)",
-    profile_name: "match AppStore com.kenvue.katalyst.demo", # Ensure this profile matches your provisioning profile
+    path: ENV['PATH']#"HelloWorld.xcodeproj", # Update with your project path
+    code_sign_identity: ENV['CODE_SIGN_IDENTITY']#"Apple Distribution: Johnson and Johnson Consumer Services EAME Limited (D6CR985G9Q)",
+    profile_name: ENV['PROFILE_NAME']#"match AppStore com.kenvue.katalyst.demo", # Ensure this profile matches your provisioning profile
     bundle_identifier: bundle_id
   )
 
@@ -76,8 +76,8 @@ desc "Build and push a new build to TestFlight"
 lane :release_build do
   #scheme = "HelloWorld"
   app_identifier = ENV['APP_IDENTIFIER']#"com.kenvue.katalyst.demo" 
-  beta("HelloWorld", app_identifier) # Replace HelloWorld with your scheme
-  build_app(scheme: "HelloWorld", export_method: "app-store",project: "HelloWorld.xcodeproj")
+  beta(ENV['SCHEME'], app_identifier) # Replace HelloWorld with your scheme
+  build_app(scheme: ENV['SCHEME'], export_method: "app-store",project: "HelloWorld.xcodeproj")
   upload_to_testflight(app_identifier: app_identifier)
   # Cleanup the p8 file after the build to ensure it's not lingering around
   File.delete(Dir.pwd + "/AuthKey_598XJ59JZF.p8") if File.exist?(Dir.pwd + "/AuthKey_598XJ59JZF.p8")
