@@ -1,10 +1,10 @@
 #git_url(ENV['GITAUTHORIZATION'])
-git_url("https://sharadmadhesiya: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@github.com/sharadmadhesiya/jte_pipeline.git")
+git_url("https://#{ENV['GIT_USERNAME']}:#{ENV['TOKEN']}@#{ENV['GIT_HOST']}/#{ENV['REPO_URL']}")
 storage_mode("git")
 
 type("development") # The default type, can be: appstore, adhoc, enterprise or development
 app_identifier(ENV['APP_IDENTIFIER'])#("com.kenvue.katalyst.demo")
-team_id("D6CR985G9Q")
+team_id(ENV['TEAM_ID'])
 #
 # app_identifier(["tools.fastlane.app", "tools.fastlane.app2"])
 # username("user@fastlane.tools") # Your Apple Developer Portal username

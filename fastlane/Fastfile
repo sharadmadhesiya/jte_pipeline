@@ -41,7 +41,7 @@ def beta(scheme, bundle_id)
 
   update_code_signing_settings(
     use_automatic_signing: false,
-    path: ENV['PATH'],#"HelloWorld.xcodeproj", # Update with your project path
+    path: ENV['PROJECT_PATH'],#"HelloWorld.xcodeproj", # Update with your project path
     code_sign_identity: ENV['CODE_SIGN_IDENTITY'],#"Apple Distribution: Johnson and Johnson Consumer Services EAME Limited (D6CR985G9Q)",
     profile_name: ENV['PROFILE_NAME'],#"match AppStore com.kenvue.katalyst.demo", # Ensure this profile matches your provisioning profile
     bundle_identifier: bundle_id
